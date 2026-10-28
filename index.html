@@ -366,9 +366,9 @@ html:not(.js) .words, html.still .words { position: relative; left: auto; right:
     }
     const lift = easeIn(clamp((p - .17) / .32));
     els.title.style.transform = `translate3d(${(lift * 40 * k).toFixed(1)}px,${(-lift * 1750 * k).toFixed(1)}px,0) rotate(${(lift * 4).toFixed(2)}deg)`;
-    pit.style.opacity = (1 - ease(clamp((p - .3) / .42))).toFixed(3);
+    pit.style.opacity = (1 - ease(clamp((p - .24) / .3))).toFixed(3);
     plate.style.transform = `scale(${(1.14 - .14 * ease(clamp((p - .12) / .6))).toFixed(4)})`;
-    const a = 1 - ease(clamp((p - .3) / .12)), b = ease(clamp((p - .5) / .14));
+    const a = 1 - ease(clamp((p - .28) / .1)), b = ease(clamp((p - .4) / .1));
     sayA.style.opacity = a.toFixed(3);
     sayA.style.transform = `translate3d(0,${(-(1 - a) * 14).toFixed(1)}px,0)`;
     sayB.style.opacity = b.toFixed(3);
