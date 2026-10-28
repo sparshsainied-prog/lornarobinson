@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lorna Robinson | Oread and Hamadryad</title>
+<meta name="description" content="Oread and Hamadryad, novels by Lorna Robinson: a future UK where every citizen is paired with a tree, and the world in the tunnels beneath it.">
+<meta property="og:title" content="A homepage for Lorna Robinson, made by Sparsh Saini">
+<meta property="og:description" content="A homepage idea for Lorna Robinson, Oread and Hamadryad, made by Sparsh Saini. Not her official site.">
+<meta property="og:image" content="https://sparshsainied-prog.github.io/lornarobinson/img/og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23100d0c'/><g fill='none' stroke='%23e8702e' stroke-width='2.2'><circle cx='13' cy='19' r='4'/><circle cx='13' cy='19' r='9'/></g></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Alegreya:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/oread.jpg">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* Everything is lifted from the Hamadryad and Oread covers (artwork by Lydia Hall):
+   the printed black ground, the tree-ring oranges, the tunnel lilac, the cream-yellow of her name,
+   the tall rough capitals of the titles (Bebas Neue, speckled like the print) and a classical reading face. */
+:root {
+  --ground: #100d0c;
+  --ground-2: #1a1513;
+  --ring: #e8702e;
+  --ring-hi: #f2a43a;
+  --ring-deep: #c6401f;
+  --lilac: #b493c4;
+  --lilac-pale: #d9c8e0;
+  --tunnel: #2a2430;
+  --name: #ede08f;
+  --paper: #f4efe6;
+  --soft: #b9aea4;
+  --cap: "Bebas Neue", "Oswald", "Arial Narrow", sans-serif;
+  --read: "Alegreya", Georgia, serif;
+  --gutter: clamp(1rem, 5vw, 4rem);
+  --spine: 0px;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--ground); color: var(--paper); font-family: var(--read); font-size: 1.15rem; line-height: 1.55; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--name); outline-offset: 3px; }
+
+.strip { background: var(--paper); color: var(--ground); text-align: center; font-size: .95rem; padding: .45rem var(--gutter); position: relative; z-index: 30; }
+
+/* the cover's capitals: tall, rough, flecked like a print */
+.cap { font-family: var(--cap); font-weight: 400; letter-spacing: .02em; line-height: .92; -webkit-mask: url(img/speckle.png) 0 0 / 240px 240px repeat; mask: url(img/speckle.png) 0 0 / 240px 240px repeat; }
+
+/* ---------- nav: the cover's vertical title, as a spine on the right edge ---------- */
+.spine { position: fixed; z-index: 40; top: 0; right: 0; height: 100%; width: 56px; background: var(--ground); border-left: 2px solid var(--ground-2); display: none; }
+.spine ol { list-style: none; margin: 0; padding: 0; height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 1.6rem; align-items: center; }
+.spine a { writing-mode: vertical-rl; text-decoration: none; font-family: var(--cap); font-size: 1.35rem; letter-spacing: .12em; color: var(--paper); opacity: .78; }
+.spine a:hover, .spine a.on { opacity: 1; color: var(--name); }
+.tab { position: fixed; z-index: 41; right: 0; top: 46%; width: 38px; padding: .9rem 0; border: 0; background: var(--paper); color: var(--ground); font-family: var(--cap); font-size: 1.15rem; letter-spacing: .14em; writing-mode: vertical-rl; cursor: pointer; border-radius: 0; clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%, 4% 50%); }
+.sheet { position: fixed; inset: 0; z-index: 50; background: var(--ground); display: none; padding: 4.2rem var(--gutter) 2rem; overflow: auto; }
+.sheet.open { display: block; }
+.sheet ol { list-style: none; margin: 0; padding: 0; }
+.sheet a { display: block; text-decoration: none; font-family: var(--cap); font-size: 2.6rem; line-height: 1.15; padding: .3rem 0; border-bottom: 1px solid #2c2522; }
+.sheet a:nth-child(n) span { color: var(--name); font-size: 1.1rem; font-family: var(--read); letter-spacing: 0; margin-left: .6rem; }
+.sheet .x { position: absolute; top: 1rem; right: 1rem; background: none; border: 0; color: var(--paper); font-family: var(--cap); font-size: 1.6rem; letter-spacing: .1em; cursor: pointer; }
+@media (min-width: 900px) {
+  :root { --spine: 56px; }
+  .spine { display: block; }
+  .tab { display: none; }
+  body { padding-right: var(--spine); }
+}
+
+/* ---------- hero: Hamadryad on top of Oread ---------- */
+.hero { position: relative; height: 340vh; }
+.stage { --bw: min(calc(100vw - 62px), calc((100svh - 245px) * .625)); position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.book { position: absolute; left: 12px; top: 12px; width: var(--bw); aspect-ratio: 1000 / 1600; overflow: hidden; background: #000; box-shadow: 0 18px 40px rgba(0, 0, 0, .55); }
+.plate { position: absolute; inset: 0; background: url(img/oread.jpg) center / 100% 100% no-repeat; will-change: transform; transform-origin: 15.6% 57%; }
+.pit { position: absolute; inset: 0; background: #050404; will-change: opacity; }
+.pl { position: absolute; display: block; max-width: none; will-change: transform; }
+.words { position: absolute; left: var(--gutter); right: 46px; top: calc(12px + var(--bw) * 1.6 + 16px); }
+.says { display: grid; }
+.says > * { grid-area: 1 / 1; }
+.words h1 { font-family: var(--cap); font-weight: 400; font-size: 1.35rem; letter-spacing: .14em; color: var(--name); margin: 0 0 .35rem; }
+.say { will-change: opacity, transform; }
+.say .line { font-size: clamp(1.18rem, 4.9vw, 1.45rem); line-height: 1.3; margin: 0 0 .85rem; }
+.say .line b { font-family: var(--cap); font-weight: 400; font-size: 1.25em; letter-spacing: .06em; }
+.say.a b { color: var(--ring-hi); }
+.say.b b { color: var(--lilac); }
+.btns { display: flex; flex-wrap: wrap; gap: .7rem 1.1rem; align-items: center; }
+.btn { display: inline-block; text-decoration: none; font-family: var(--cap); font-size: 1.45rem; letter-spacing: .1em; line-height: 1; padding: .62rem 1.05rem .5rem; background: var(--paper); color: var(--ground); clip-path: polygon(0 3%, 6% 0, 100% 2%, 99% 96%, 94% 100%, 1% 98%); -webkit-mask: url(img/speckle.png) 0 0 / 240px 240px repeat; mask: url(img/speckle.png) 0 0 / 240px 240px repeat; }
+.btn.lil { background: var(--lilac); }
+.btn.org { background: var(--ring); }
+.btn:hover { background: var(--name); }
+.link { text-decoration: underline; text-decoration-color: var(--name); text-decoration-thickness: 2px; text-underline-offset: 5px; }
+@media (min-width: 900px) {
+  .stage { --bw: min(calc(86svh * .625), 40vw); }
+  .book { left: 7vw; top: 50%; transform: translateY(-50%); }
+  .words { left: calc(7vw + var(--bw) + 5vw); right: calc(var(--spine) + 4vw); top: 50%; transform: translateY(-50%); max-width: 38rem; }
+  .words h1 { font-size: 2rem; margin-bottom: .8rem; }
+  .say .line { font-size: clamp(1.9rem, 2.7vw, 2.75rem); line-height: 1.22; margin-bottom: 1.4rem; }
+  .btn { font-size: 1.75rem; }
+}
+
+/* ---------- sections ---------- */
+.sec { padding: clamp(3.5rem, 9vw, 7rem) var(--gutter); }
+.in { max-width: 1120px; margin: 0 auto; }
+h2 { font-size: clamp(3rem, 12vw, 6.4rem); margin: 0 0 1.4rem; }
+h3 { font-family: var(--cap); font-weight: 400; font-size: 2rem; letter-spacing: .04em; margin: 0 0 .3rem; line-height: 1; }
+p { margin: 0 0 1rem; max-width: 37rem; }
+.two { display: grid; gap: 2.4rem; align-items: start; }
+@media (min-width: 860px) { .two { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 4.5rem; } .two.flip > :first-child { order: 2; } }
+.cover { box-shadow: 0 14px 30px rgba(0, 0, 0, .5); width: min(330px, 78vw); }
+.quote { font-style: italic; font-size: 1.25rem; border-left: 3px solid currentColor; padding-left: 1rem; margin: 1.6rem 0 0; max-width: 34rem; }
+.quote cite { display: block; font-style: normal; font-size: 1rem; margin-top: .5rem; opacity: .8; }
+.formats { font-size: 1.05rem; color: var(--soft); margin-bottom: 1.4rem; }
+
+.below { background: var(--lilac); color: var(--tunnel); }
+.below h2 { color: var(--ground); }
+.below .formats { color: #3c3346; }
+.below .btn { background: var(--ground); color: var(--lilac-pale); }
+.below .btn:hover { background: var(--tunnel); }
+.above h2 { color: var(--ring); }
+
+.trail { background: var(--ground-2); }
+.dates { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; gap: 2rem; }
+@media (min-width: 860px) { .dates { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+.dates .day { font-family: var(--cap); font-size: clamp(3.4rem, 13vw, 5.6rem); line-height: .9; color: var(--name); display: block; }
+.dates .what { font-family: var(--cap); font-size: 1.8rem; letter-spacing: .04em; display: block; margin: .4rem 0 .5rem; color: var(--lilac); }
+.dates p { color: var(--paper); }
+.dates .tbl { color: var(--ring-hi); }
+
+.shelf ol { list-style: none; padding: 0; margin: 0; }
+.shelf li { display: grid; grid-template-columns: 92px 1fr; gap: 1.2rem; padding: 1.6rem 0; border-top: 1px solid #2f2824; align-items: start; }
+.shelf li:last-child { border-bottom: 1px solid #2f2824; }
+.shelf li img { width: 92px; box-shadow: 0 8px 18px rgba(0, 0, 0, .5); }
+.shelf li .more { grid-column: 2; }
+@media (max-width: 859px) { .below .cover { display: none; } }
+.shelf h3 { color: var(--name); }
+.shelf p { margin-bottom: .6rem; }
+@media (min-width: 860px) { .shelf li { grid-template-columns: 130px 1fr 1fr; gap: 2.2rem; } .shelf li img { width: 130px; } .shelf li .more { grid-column: 3; padding-top: 2.2rem; } }
+
+.lorna h2 { color: var(--paper); }
+.facts { list-style: none; padding: 0; margin: 1.6rem 0 0; }
+.facts li { padding: .55rem 0; border-top: 1px solid #2f2824; }
+.facts b { font-weight: 500; color: var(--name); }
+
+.cafe { background: var(--paper); color: var(--ground); }
+.cafe h2 { color: var(--ring-deep); }
+.cafe .where { font-size: 1.3rem; max-width: 40rem; }
+.cafe .btn { background: var(--ground); color: var(--paper); }
+.cafe .btn:hover { background: var(--ring-deep); }
+footer { background: var(--ground); color: var(--soft); text-align: center; padding: 1.6rem var(--gutter) 2.4rem; font-size: 1rem; }
+
+/* no JavaScript or reduced motion: the finished cover, no pin */
+html:not(.js) .hero, html.still .hero { height: auto; }
+html:not(.js) .stage, html.still .stage { position: relative; height: auto; padding-bottom: 1.5rem; }
+html:not(.js) .book, html.still .book { position: relative; left: auto; top: auto; transform: none; margin: 12px 0 0 12px; }
+html:not(.js) .pl, html.still .pl, html:not(.js) .pit, html.still .pit, html:not(.js) .say.a, html.still .say.a { display: none; }
+html:not(.js) .words, html.still .words { position: relative; left: auto; right: auto; top: auto; transform: none; max-width: none; padding: 1.4rem var(--gutter) 0; }
+@media (min-width: 900px) {
+  html:not(.js) .stage, html.still .stage { display: flex; align-items: center; gap: 5vw; padding: 3rem 4vw 3rem 7vw; }
+  html:not(.js) .book, html.still .book { margin: 0; flex: none; }
+  html:not(.js) .words, html.still .words { padding: 0; }
+}
+</style>
+</head>
+<body>
+<div class="strip">A homepage idea made by Sparsh Saini for Lorna Robinson. Not their official site.</div>
+
+<nav class="spine" aria-label="Sections">
+  <ol>
+    <li><a href="#oread">Oread</a></li>
+    <li><a href="#hamadryad">Hamadryad</a></li>
+    <li><a href="#trail">The trail</a></li>
+    <li><a href="#shelf">More books</a></li>
+    <li><a href="#lorna">Lorna</a></li>
+    <li><a href="#cafe">The café</a></li>
+  </ol>
+</nav>
+<button class="tab" aria-controls="sheet" aria-expanded="false">Contents</button>
+<div class="sheet" id="sheet" role="dialog" aria-label="Contents">
+  <button class="x" aria-label="Close the contents">Close</button>
+  <ol>
+    <li><a href="#oread">Oread <span>the new novel</span></a></li>
+    <li><a href="#hamadryad">Hamadryad <span>where it began</span></a></li>
+    <li><a href="#trail">The trail <span>14 and 22 November</span></a></li>
+    <li><a href="#shelf">More books</a></li>
+    <li><a href="#lorna">Lorna</a></li>
+    <li><a href="#cafe">The café <span>monthly, Oxford</span></a></li>
+  </ol>
+</div>
+
+<main>
+<section class="hero" id="top" aria-label="Hamadryad opens onto Oread">
+  <div class="stage">
+    <div class="book" role="img" aria-label="The cover of Hamadryad, a cross-section of tree rings in orange, splits open from its heart to show the cover of Oread underneath: a lilac drawing of an old London Underground tunnel.">
+      <div class="plate"></div>
+      <div class="pit"></div>
+      <img class="pl" data-k="w0" src="img/w0.webp" alt="">
+      <img class="pl" data-k="w1" src="img/w1.webp" alt="">
+      <img class="pl" data-k="w2" src="img/w2.webp" alt="">
+      <img class="pl" data-k="w3" src="img/w3.webp" alt="">
+      <img class="pl" data-k="w4" src="img/w4.webp" alt="">
+      <img class="pl" data-k="w5" src="img/w5.webp" alt="">
+      <img class="pl" data-k="w6" src="img/w6.webp" alt="">
+      <img class="pl" data-k="title" src="img/h-title.webp" alt="">
+    </div>
+    <div class="words">
+      <h1>Lorna Robinson</h1>
+      <div class="says">
+        <div class="say a"><p class="line"><b>Hamadryad.</b> A bold new programme to pair every citizen with a tree.</p></div>
+        <div class="say b">
+          <p class="line"><b>Oread.</b> Two hundred years later, deep in the tunnels beneath London, a community has been growing which rejects the Charter.</p>
+          <div class="btns"><a class="btn lil" href="https://www.amazon.co.uk/dp/B0HKSFR4PJ">Get Oread</a><a class="link" href="#trail">Come to the launch</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec below" id="oread">
+  <div class="in two">
+    <img class="cover" src="img/oread-sm.jpg" alt="The cover of Oread: a lilac and black drawing of a curving Underground tunnel, the title running down the right in white capitals." width="560" height="896" loading="lazy">
+    <div>
+      <h2 class="cap">The world beneath the trees</h2>
+      <p>Two hundred years have passed since the UK government instituted a bold new programme to pair every citizen with a tree. Known as the Hamadryad Charter, it created vast national forests, major civic festivals and a whole new system of personal names.</p>
+      <p>Deep in the tunnels beneath London, a community has been growing which rejects the Charter. Tensions between the two societies are rising sharply. When a lone Hamadryad finds his way into the underground, a terrible tragedy threatens to unfold.</p>
+      <p>Oread is the sequel to Hamadryad, but can be read on its own.</p>
+      <p class="formats">Hardback, paperback and ebook. Soon in Blackwell's, and signed at my table at the Oxford Indie Book Fair.</p>
+      <div class="btns"><a class="btn" href="https://www.amazon.co.uk/dp/B0HKSFR4PJ">Buy Oread</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec above" id="hamadryad">
+  <div class="in two flip">
+    <img class="cover" src="img/hamadryad-sm.jpg" alt="The cover of Hamadryad: the cross-section of a tree grown from two hearts, printed in orange on black." width="560" height="896" loading="lazy">
+    <div>
+      <h2 class="cap">Where it began</h2>
+      <p>In a climate-ravaged future UK, the Green Party is elected, and their bold young leader institutes a national programme to restore ancient traditions by pairing trees with humans. From huge civic festivals to different personal names, a new framework is put in place overnight.</p>
+      <p>In the aftermath, a small community forms in the abandoned tunnels of the London Underground which questions the changes, while others embrace the new order with a cult-like intensity. Hamadryad follows three very different people and their trees.</p>
+      <p class="formats">Illustrated throughout by the artist Lydia Hall. Hardback, paperback and ebook.</p>
+      <div class="btns"><a class="btn org" href="https://www.amazon.co.uk/dp/B0GPPCCH79">Buy Hamadryad</a></div>
+      <blockquote class="quote">"A smart updating of classical hamadryads or tree-spirits."<cite>Professor Stephen Harrison, Professor of Latin Literature, University of Oxford</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="sec trail" id="trail">
+  <div class="in">
+    <h2 class="cap">The tunnels are calling</h2>
+    <ul class="dates">
+      <li>
+        <span class="day cap">Sat 14 Nov</span>
+        <span class="what">Oread launch and mystery artefact trail</span>
+        <p>2.30 to 5pm at Cheney School, Oxford. Arrive any time at main reception and follow the trail through tunnel-like corridors in the Rumble Museum to the Iris Classics Centre: drinks, books, chat, creative writing for anyone who wants a go, and maybe a reading. Tunnel travellers of all ages are welcome.</p>
+        <a class="link" href="mailto:lro@cheneyschool.org">Email to take the journey</a>
+      </li>
+      <li>
+        <span class="day cap">Sun 22 Nov</span>
+        <span class="what">Oxford Indie Book Fair, <span class="tbl">table S33</span></span>
+        <p>Both novels, signed, along with The Birder, Flower Gatherers and Telling Tales in Nature. Come and say hello.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec shelf" id="shelf">
+  <div class="in">
+    <h2 class="cap">Also on the shelf</h2>
+    <ol>
+      <li>
+        <img src="img/birder.jpg" alt="The cover of The Birder." width="232" height="360" loading="lazy">
+        <div><h3>The Birder</h3><p>An Ovid-inspired novel set in an alternate Oxford where people transform instead of dying.</p></div>
+        <div class="more"><p>Illustrated with linocut prints of birds around the city: St Giles' Cafe, Gloucester Green, Martyrs' Memorial, Lady Margaret Hall, the C.S. Lewis Nature Reserve.</p><a class="link" href="https://www.amazon.co.uk/dp/B0DNC7V79X">Order The Birder</a></div>
+      </li>
+      <li>
+        <img src="img/flower-gatherers.jpg" alt="The cover of Flower Gatherers." width="233" height="360" loading="lazy">
+        <div><h3>Flower Gatherers</h3><p>Two women separated by millennia, bound together by the mysteries of the Minoan world.</p></div>
+        <div class="more"><p>Key chapters are set in the Ashmolean Museum's Aegean World Gallery, with illustrations in each chapter by Lydia Hall.</p><a class="link" href="https://www.amazon.co.uk/dp/B0FJS96JD6">Order Flower Gatherers</a></div>
+      </li>
+      <li>
+        <img src="img/telling-tales.jpg" alt="The cover of Telling Tales in Nature." width="256" height="360" loading="lazy">
+        <div><h3>Telling Tales in Nature</h3><p>Greek myths retold from the perspective of the spirits of plants.</p></div>
+        <div class="more"><p>All four books in one: Underworld, Forest, Orchard and Meadow Tales, with botanical drawings by Lydia Hall.</p><a class="link" href="https://www.amazon.co.uk/dp/B0CSNN1BTN">Order the compendium</a></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec lorna" id="lorna">
+  <div class="in two">
+    <div>
+      <h2 class="cap">Hello, I'm Lorna</h2>
+    </div>
+    <div>
+      <p>I studied Classics at Lady Margaret Hall, Oxford. A chance encounter with a Gabriel García Márquez novel in my finals year made me curious about how much it shared with Ovid, and that curiosity became a doctorate at University College London.</p>
+      <p>In 2006 I started the Iris Project and Iris magazine to bring Classics into state schools. I now run Latin and Greek projects in schools across the UK, the Iris Classics Centre, and the Rumble Museum at Cheney School.</p>
+      <ul class="facts">
+        <li><b>The Rumble Museum:</b> the first accredited museum in a state school</li>
+        <li><b>Also written:</b> Telling Tales in Latin, Distant Lands and Telling Tales in Greek</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec cafe" id="cafe">
+  <div class="in">
+    <h2 class="cap">Come and write with us</h2>
+    <p class="where">The Classics and Creative Writing Café meets once a month, at the Iris Classics Centre at Cheney School or St Alban's Church on Charles Street, Oxford.</p>
+    <p>Bring an idea, have a go at writing, or just read and chat. Each session has a classical theme as a prompt, all genres are welcome, and it's for ages 14 to adult. Hot and cold drinks and snacks are there (donations towards them are welcome). Come once or come every month.</p>
+    <div class="btns"><a class="btn" href="mailto:lorna@irisproject.org.uk">Book a place</a><a class="link" href="https://www.instagram.com/irisprojectlorna/">@irisprojectlorna</a></div>
+  </div>
+</section>
+</main>
+
+<footer>A mockup made by Sparsh Saini for Lorna Robinson. Not affiliated, not live.</footer>
+
+<script>
+(() => {
+  // contents sheet on phones, spine highlight on desktop
+  const tab = document.querySelector('.tab'), sheet = document.getElementById('sheet');
+  const setOpen = o => { sheet.classList.toggle('open', o); tab.setAttribute('aria-expanded', o); if (o) sheet.querySelector('a').focus(); };
+  tab.addEventListener('click', () => setOpen(true));
+  sheet.addEventListener('click', e => { if (e.target.closest('.x') || e.target.closest('a')) setOpen(false); });
+  addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+  const marks = [...document.querySelectorAll('.spine a')];
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) marks.forEach(a => a.classList.toggle('on', a.hash === '#' + e.target.id)); }), { rootMargin: '-45% 0px -50% 0px' });
+  marks.forEach(a => io.observe(document.querySelector(a.hash)));
+
+  // the Hamadryad cover, in cover pixels (1000 x 1600), cut by build/make-planes.py
+  const CW = 1000, CH = 1600, C = [216, 911];
+  const BOX = {"w0": [9, 0, 991, 912], "w1": [215, 186, 785, 860], "w2": [216, 910, 784, 690], "w3": [56, 911, 714, 689], "w4": [0, 911, 217, 689], "w5": [0, 851, 217, 115], "w6": [0, 0, 217, 912], "title": [798, 79, 146, 1464]};
+  const BIS = [-1.2426, -0.314, 0.4518, 1.2611, 2.3426, 3.1606, 3.9685];
+  const ORDER = [2, 0, 3, 1, 6, 4, 5]; // which piece lets go first
+  const els = {};
+  document.querySelectorAll('.pl').forEach(el => {
+    const [x, y, w, h] = BOX[el.dataset.k];
+    Object.assign(el.style, { left: x / CW * 100 + '%', top: y / CH * 100 + '%', width: w / CW * 100 + '%', height: h / CH * 100 + '%' });
+    el.style.transformOrigin = `${(C[0] - x) / w * 100}% ${(C[1] - y) / h * 100}%`;
+    els[el.dataset.k] = el;
+  });
+  els.title.style.transformOrigin = '50% 50%';
+  const W = BIS.map((b, j) => ({ el: els['w' + j], dx: Math.cos(b), dy: Math.sin(b), o: ORDER.indexOf(j), spin: (j % 2 ? -1 : 1) * (5 + j) }));
+
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  const hero = document.querySelector('.hero'), book = document.querySelector('.book');
+  const plate = document.querySelector('.plate'), pit = document.querySelector('.pit');
+  const sayA = document.querySelector('.say.a'), sayB = document.querySelector('.say.b');
+  const clamp = v => v < 0 ? 0 : v > 1 ? 1 : v;
+  const ease = t => t * t * (3 - 2 * t);
+  const easeIn = t => t * t;
+  let k = 1, top = 0, run = 1, ticking = false, lastP = -1;
+  function measure() {
+    k = book.getBoundingClientRect().width / CW;
+    top = hero.getBoundingClientRect().top + scrollY;
+    run = Math.max(1, hero.offsetHeight - innerHeight);
+  }
+  function draw(p) {
+    // 1. the heart cracks (the pieces part by a hair), 2. they slide away one after another,
+    // 3. the tunnel underneath comes up into the light
+    const crack = ease(clamp((p - .05) / .1));
+    for (const w of W) {
+      const t = clamp((p - (.15 + w.o * .045)) / .3);
+      const d = crack * (7 + w.o * 1.5) + easeIn(t) * 1250;
+      const r = easeIn(t) * w.spin;
+      w.el.style.transform = `translate3d(${(w.dx * d * k).toFixed(1)}px,${(w.dy * d * k).toFixed(1)}px,0) rotate(${r.toFixed(2)}deg)`;
+    }
+    const lift = easeIn(clamp((p - .17) / .32));
+    els.title.style.transform = `translate3d(${(lift * 40 * k).toFixed(1)}px,${(-lift * 1750 * k).toFixed(1)}px,0) rotate(${(lift * 4).toFixed(2)}deg)`;
+    pit.style.opacity = (1 - ease(clamp((p - .3) / .42))).toFixed(3);
+    plate.style.transform = `scale(${(1.14 - .14 * ease(clamp((p - .12) / .6))).toFixed(4)})`;
+    const a = 1 - ease(clamp((p - .3) / .12)), b = ease(clamp((p - .5) / .14));
+    sayA.style.opacity = a.toFixed(3);
+    sayA.style.transform = `translate3d(0,${(-(1 - a) * 14).toFixed(1)}px,0)`;
+    sayB.style.opacity = b.toFixed(3);
+    sayB.style.transform = `translate3d(0,${((1 - b) * 18).toFixed(1)}px,0)`;
+    sayA.style.visibility = a < .01 ? 'hidden' : 'visible';
+    sayB.style.visibility = b < .01 ? 'hidden' : 'visible';
+  }
+  function frame() {
+    ticking = false;
+    const p = still.matches ? 1 : clamp((scrollY - top) / run);
+    if (Math.abs(p - lastP) < .0004) return;
+    lastP = p; draw(p);
+  }
+  function setMode() {
+    document.documentElement.classList.toggle('still', still.matches);
+    measure(); lastP = -1; frame();
+  }
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, { passive: true });
+  addEventListener('resize', () => { measure(); lastP = -1; frame(); });
+  still.addEventListener('change', setMode);
+  setMode();
+})();
+</script>
+</body>
+</html>
